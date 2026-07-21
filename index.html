@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voltline Electrical — Abu Dhabi Electricians</title>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#12181F;
+  --ink2:#1B232C;
+  --paper:#F2EFE9;
+  --paper2:#E9E4D9;
+  --amber:#E8A33D;
+  --amber-dim:#C4842A;
+  --slate:#3D5A6C;
+  --white:#FAF8F4;
+  --line:rgba(232,163,61,0.35);
+}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,.display{font-family:'Big Shoulders Display',sans-serif;text-transform:uppercase;letter-spacing:0.01em}
+
+/* CIRCUIT TRACE - the signature element */
+.trace-svg{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.trace-path{fill:none;stroke:var(--amber);stroke-width:2;opacity:0.45;stroke-dasharray:6 8}
+.trace-pulse{fill:none;stroke:var(--amber);stroke-width:2;opacity:0.9;stroke-dasharray:2 900;animation:pulse-flow 6s linear infinite}
+@keyframes pulse-flow{
+  0%{stroke-dashoffset:0;opacity:0}
+  5%{opacity:1}
+  90%{opacity:1}
+  100%{stroke-dashoffset:-900;opacity:0}
+}
+.node{fill:var(--amber)}
+
+/* NAV */
+nav{padding:1.1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:var(--ink);position:sticky;top:0;z-index:100;border-bottom:1px solid #2a333d}
+.logo{font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:1.3rem;color:var(--white);letter-spacing:0.02em;display:flex;align-items:center;gap:0.5rem}
+.logo-bolt{color:var(--amber)}
+.nav-links{display:flex;gap:2rem;font-size:0.82rem;color:#9BA6B0;text-transform:uppercase;letter-spacing:0.06em;font-weight:600}
+.nav-links a:hover{color:var(--amber)}
+.nav-cta{background:var(--amber);color:var(--ink);padding:0.55rem 1.3rem;font-size:0.82rem;font-weight:700;font-family:'Big Shoulders Display',sans-serif;text-transform:uppercase;letter-spacing:0.04em;transition:background 0.2s}
+.nav-cta:hover{background:#fff}
+
+/* HERO */
+.hero{position:relative;background:var(--ink);color:var(--white);padding:6rem 2rem 5rem;overflow:hidden}
+.hero-inner{position:relative;z-index:2;max-width:760px;margin:0 auto;text-align:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(232,163,61,0.12);border:1px solid var(--line);color:var(--amber);padding:0.4rem 1rem;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.75rem;font-family:'Big Shoulders Display',sans-serif}
+.hero h1{font-size:clamp(2.6rem,6.5vw,4.6rem);font-weight:900;line-height:0.98;margin-bottom:1.4rem}
+.hero h1 .amber{color:var(--amber)}
+.hero-sub{font-size:1.05rem;color:#C8CED4;max-width:520px;margin:0 auto 2.4rem;font-weight:400}
+.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem}
+.btn-amber{background:var(--amber);color:var(--ink);padding:0.9rem 1.9rem;font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:0.95rem;text-transform:uppercase;letter-spacing:0.03em;transition:transform 0.15s, background 0.2s}
+.btn-amber:hover{background:#fff;transform:translateY(-2px)}
+.btn-ghost{border:1.5px solid #3d4750;color:var(--white);padding:0.9rem 1.9rem;font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:0.95rem;text-transform:uppercase;letter-spacing:0.03em;transition:border-color 0.2s}
+.btn-ghost:hover{border-color:var(--amber)}
+
+/* RESPONSE TICKER */
+.ticker{display:flex;justify-content:center;gap:0;flex-wrap:wrap;border-top:1px solid #2a333d;border-bottom:1px solid #2a333d;background:var(--ink2)}
+.tick{padding:1.3rem 2.2rem;text-align:center;border-right:1px solid #2a333d;flex:1;min-width:150px}
+.tick:last-child{border-right:none}
+.tick-num{font-family:'Big Shoulders Display',sans-serif;font-size:1.9rem;font-weight:800;color:var(--amber);display:block;line-height:1}
+.tick-label{font-size:0.72rem;color:#8B95A0;text-transform:uppercase;letter-spacing:0.08em;margin-top:0.35rem;font-weight:600}
+
+/* SECTIONS */
+section{padding:5.5rem 2rem;position:relative}
+.container{max-width:1040px;margin:0 auto;position:relative;z-index:2}
+.eyebrow{font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--amber-dim);margin-bottom:0.7rem;font-family:'Big Shoulders Display',sans-serif}
+.sec-title{font-size:clamp(1.9rem,3.4vw,2.7rem);font-weight:800;line-height:1.05;margin-bottom:1rem}
+.sec-sub{color:#5A6470;font-size:0.98rem;max-width:520px;line-height:1.7}
+
+/* SERVICES */
+.services-bg{background:var(--paper2)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.3rem;margin-top:3rem}
+.svc-card{background:var(--white);border:1px solid #DDD5C4;padding:1.8rem;position:relative;transition:all 0.2s}
+.svc-card:hover{border-color:var(--amber);box-shadow:0 10px 30px rgba(18,24,31,0.08);transform:translateY(-3px)}
+.svc-tag{font-family:'Big Shoulders Display',sans-serif;font-size:0.7rem;font-weight:700;color:var(--amber-dim);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.6rem}
+.svc-card h3{font-size:1.3rem;font-weight:700;margin-bottom:0.6rem;text-transform:none;letter-spacing:0}
+.svc-card p{font-size:0.88rem;color:#5A6470;line-height:1.65}
+
+/* PROCESS - not numbered steps, uses call-flow instead */
+.flow{margin-top:3rem;display:flex;flex-direction:column;gap:0}
+.flow-row{display:grid;grid-template-columns:120px 1fr;gap:1.5rem;padding:1.6rem 0;border-bottom:1px solid #DDD5C4;align-items:start}
+.flow-row:last-child{border-bottom:none}
+.flow-time{font-family:'Big Shoulders Display',sans-serif;font-size:1rem;font-weight:800;color:var(--amber-dim)}
+.flow-body h3{font-size:1.15rem;font-weight:700;margin-bottom:0.4rem;text-transform:none;letter-spacing:0}
+.flow-body p{font-size:0.9rem;color:#5A6470}
+
+/* TRUST / DARK BAND */
+.trust-band{background:var(--ink);color:var(--white)}
+.trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;margin-top:3rem}
+.trust-item{border-left:2px solid var(--amber);padding-left:1.2rem}
+.trust-item h3{font-size:1.1rem;font-weight:700;margin-bottom:0.4rem;text-transform:none;letter-spacing:0;color:var(--white)}
+.trust-item p{font-size:0.88rem;color:#9BA6B0;line-height:1.6}
+
+/* TESTIMONIAL */
+.quote-section{text-align:center;max-width:680px;margin:0 auto}
+.quote-mark{font-family:'Big Shoulders Display',sans-serif;font-size:4rem;color:var(--amber);line-height:0.5;display:block;margin-bottom:1rem}
+.quote-text{font-size:1.25rem;font-weight:500;color:var(--ink);line-height:1.55;margin-bottom:1.3rem}
+.quote-name{font-family:'Big Shoulders Display',sans-serif;font-weight:700;color:var(--amber-dim);letter-spacing:0.04em;text-transform:uppercase;font-size:0.85rem}
+
+/* CTA BOTTOM */
+.cta-bottom{background:var(--ink);text-align:center;padding:5.5rem 2rem;position:relative;overflow:hidden}
+.cta-bottom h2{font-size:clamp(2rem,4vw,2.9rem);font-weight:900;color:var(--white);margin-bottom:0.9rem}
+.cta-bottom h2 .amber{color:var(--amber)}
+.cta-bottom p{color:#9BA6B0;margin-bottom:2.2rem;font-size:1rem;max-width:480px;margin-left:auto;margin-right:auto}
+.cta-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.2rem}
+.contact-strip{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;font-size:0.85rem;color:#8B95A0}
+.contact-strip .dot{width:5px;height:5px;background:var(--amber);border-radius:50%;display:inline-block;margin-right:0.5rem}
+
+footer{background:var(--ink);border-top:1px solid #2a333d;padding:1.6rem 2rem;text-align:center}
+footer p{font-size:0.78rem;color:#5A6470}
+footer span{color:var(--amber-dim)}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .tick{min-width:110px;padding:1rem}
+  .flow-row{grid-template-columns:70px 1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><span class="logo-bolt">⚡</span>VOLTLINE</div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#process">How it works</a>
+    <a href="#trust">Why us</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Call now</a>
+</nav>
+
+<section class="hero">
+  <svg class="trace-svg" viewBox="0 0 1000 500" preserveAspectRatio="none">
+    <path class="trace-path" d="M0,80 L200,80 L240,120 L500,120 L540,80 L1000,80"/>
+    <path class="trace-pulse" d="M0,80 L200,80 L240,120 L500,120 L540,80 L1000,80"/>
+    <path class="trace-path" d="M0,400 L150,400 L190,360 L450,360 L490,400 L1000,400"/>
+    <path class="trace-pulse" style="animation-delay:2s" d="M0,400 L150,400 L190,360 L450,360 L490,400 L1000,400"/>
+    <circle class="node" cx="240" cy="120" r="4"/>
+    <circle class="node" cx="540" cy="80" r="4"/>
+    <circle class="node" cx="190" cy="360" r="4"/>
+    <circle class="node" cx="490" cy="400" r="4"/>
+  </svg>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Abu Dhabi · Licensed Electricians</div>
+    <h1>The electrician<br>who <span class="amber">picks up.</span></h1>
+    <p class="hero-sub">Same-day callouts, upfront pricing, and a warranty on every job. No missed calls, no vanishing quotes, no surprise invoices.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-amber">Book a callout</a>
+      <a href="tel:+97100000000" class="btn-ghost">Call 04 000 0000</a>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="tick"><span class="tick-num">28min</span><span class="tick-label">Avg. response time</span></div>
+  <div class="tick"><span class="tick-num">24/7</span><span class="tick-label">Emergency callouts</span></div>
+  <div class="tick"><span class="tick-num">1yr</span><span class="tick-label">Warranty on all work</span></div>
+  <div class="tick"><span class="tick-num">100%</span><span class="tick-label">Upfront pricing</span></div>
+</div>
+
+<section class="services-bg" id="services">
+  <div class="container">
+    <p class="eyebrow">What we fix</p>
+    <h2 class="sec-title">Residential, commercial, and emergency work.</h2>
+    <p class="sec-sub">If it runs on electricity, we can wire it, fix it, or replace it.</p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-tag">Emergency</div>
+        <h3>Power outages & tripped panels</h3>
+        <p>Total power loss, repeated breaker trips, burning smells. We treat these as same-day, no exceptions.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-tag">Residential</div>
+        <h3>Rewiring & lighting</h3>
+        <p>Full home rewiring, ceiling fans, LED retrofits, and villa lighting design that actually gets planned, not guessed.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-tag">Commercial</div>
+        <h3>Office & retail fit-outs</h3>
+        <p>Panel upgrades, server room power, retail lighting circuits. Scheduled around your business hours, not ours.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-tag">Growing demand</div>
+        <h3>EV charger installation</h3>
+        <p>Home and villa EV charger installs, sized correctly for your panel so nothing overloads six months in.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-tag">Safety</div>
+        <h3>Inspections & compliance checks</h3>
+        <p>Pre-purchase inspections, insurance compliance checks, and fixing whatever the last electrician left behind.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-tag">Smart home</div>
+        <h3>Smart switches & automation wiring</h3>
+        <p>Wiring done right for smart panels and automation systems, so the app works because the wiring does too.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="container">
+    <p class="eyebrow">How a callout works</p>
+    <h2 class="sec-title">From call to fixed, same day.</h2>
+    <p class="sec-sub">No call center. No dispatch black hole. You talk to the person coming to your door.</p>
+    <div class="flow">
+      <div class="flow-row">
+        <div class="flow-time">0 min</div>
+        <div class="flow-body">
+          <h3>You call or message</h3>
+          <p>Tell us what's happening. If it's urgent, we say so immediately, no "someone will call you back."</p>
+        </div>
+      </div>
+      <div class="flow-row">
+        <div class="flow-time">10 min</div>
+        <div class="flow-body">
+          <h3>You get a price before we arrive</h3>
+          <p>Flat-rate quote for common jobs. No "we'll assess it and let you know" surprise invoices.</p>
+        </div>
+      </div>
+      <div class="flow-row">
+        <div class="flow-time">Same day</div>
+        <div class="flow-body">
+          <h3>We show up and fix it</h3>
+          <p>Licensed electrician, marked vehicle, ID on arrival. You watch or you don't, your call.</p>
+        </div>
+      </div>
+      <div class="flow-row">
+        <div class="flow-time">1 year</div>
+        <div class="flow-body">
+          <h3>Warranty starts the moment we leave</h3>
+          <p>If it fails from our work within a year, we return and fix it at no cost. In writing, not a verbal promise.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust-band" id="trust">
+  <div class="container">
+    <p class="eyebrow" style="color:var(--amber)">Why people switch to us</p>
+    <h2 class="sec-title" style="color:#fff">Most electricians lose you at the phone call.</h2>
+    <p class="sec-sub" style="color:#9BA6B0">We built the business around the parts people usually complain about.</p>
+    <div class="trust-grid">
+      <div class="trust-item">
+        <h3>Someone actually answers</h3>
+        <p>Not a voicemail. Not "we'll call back." A real person, every time, during and after hours.</p>
+      </div>
+      <div class="trust-item">
+        <h3>Price before, not after</h3>
+        <p>Common jobs are flat-rate. You know the number before anyone touches a wire.</p>
+      </div>
+      <div class="trust-item">
+        <h3>Marked vehicle, verified ID</h3>
+        <p>You're not letting a stranger into your home. Every electrician arrives identifiable and insured.</p>
+      </div>
+      <div class="trust-item">
+        <h3>Written warranty</h3>
+        <p>A year, in writing, on every job. If something fails because of our work, we fix it, free.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container quote-section">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">Called at 9pm on a Thursday when our whole villa lost power. Someone actually picked up, gave me a price, and had someone at the door in under 40 minutes.</p>
+    <p class="quote-name">— Sample review, Al Reem Island</p>
+  </div>
+</section>
+
+<section class="cta-bottom" id="contact">
+  <svg class="trace-svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
+    <path class="trace-path" d="M0,150 L300,150 L340,110 L660,110 L700,150 L1000,150"/>
+    <path class="trace-pulse" d="M0,150 L300,150 L340,110 L660,110 L700,150 L1000,150"/>
+    <circle class="node" cx="340" cy="110" r="4"/>
+    <circle class="node" cx="700" cy="150" r="4"/>
+  </svg>
+  <div class="container">
+    <h2>Power problem? <span class="amber">Let's fix it today.</span></h2>
+    <p>Same-day callouts across Abu Dhabi. Tell us what's wrong, get a price, get it fixed.</p>
+    <div class="cta-row">
+      <a href="tel:+97100000000" class="btn-amber">Call 04 000 0000</a>
+      <a href="https://wa.me/97100000000" class="btn-ghost">Message on WhatsApp</a>
+    </div>
+    <div class="contact-strip">
+      <div><span class="dot"></span>Abu Dhabi & surrounding areas</div>
+      <div><span class="dot"></span>24/7 emergency line</div>
+      <div><span class="dot"></span>Licensed & insured</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <span>Voltline Electrical</span> — This is a sample site built to demonstrate web design services.</p>
+</footer>
+
+</body>
+</html>
